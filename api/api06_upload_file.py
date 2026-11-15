@@ -4,7 +4,9 @@
 import requests
 
 import config
-import tools
+from utils import tools
+
+
 def upload_file_name():
     url = f"{config.BASE_URL}/api/common/upload"
     headers = {
@@ -14,7 +16,7 @@ def upload_file_name():
         #注意：使用files 参数时，request 库会自动添加"Content-Type": "multipart/formdata"类型，不必再手动添加，否则会报错！
     }
     files = {
-        "file": open("./demo.pdf","rb")#说明：rb以二进制的方式读取
+        "file": open("../data/demo.pdf", "rb")#说明：rb以二进制的方式读取
     }
     respond = requests.post(url,headers=headers,files=files)
     return respond.json().get("fileName")

@@ -1,0 +1,74 @@
+from api import api02_login
+
+
+class TestLogin:
+    #案例1：正常登录
+    def test_login01(self):
+        result = api02_login.login("admin", "HM_2023_test", "2")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 200
+        assert result.json().get("msg") == "操作成功"
+    #案例2：登录失败（账号为空）
+    def test_login02(self):
+        result = api02_login.login("", "HM_2023_test", "2")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "用户不存在/密码错误"
+    #案例3：登录失败-用户名不存在
+    def test_login03(self):
+        result = api02_login.login("administ", "HM_2023_test", "2")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "用户不存在/密码错误"
+    #案例4：登录失败-密码错误
+    def test_login04(self):
+        result = api02_login.login("administ", "HM_2023_test1", "2")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "用户不存在/密码错误"
+    #案例5：登录失败-密码为空
+    def test_login05(self):
+        result = api02_login.login("administ", "", "2")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "用户不存在/密码错误"
+    #案例6：登录失败-code为空
+    def test_login06(self):
+        result = api02_login.login("administ", "HM_2023_test", "")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "验证码错误"
+    #案例7：登录失败-code错误
+    def test_login07(self):
+        result = api02_login.login("administ", "HM_2023_test", "123")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "验证码错误"
+    #案例8：登录失败-验证码类型不对
+    def test_login08(self):
+        result = api02_login.login("administ", "HM_2023_test", "张三")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "验证码错误"
+    #案例9：登录失败-密码类型不对
+    def test_login09(self):
+        result = api02_login.login("admin", "张三", "2")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "用户不存在/密码错误"
+    #案例10：登录失败-用户名类型不对
+    def test_login10(self):
+        result = api02_login.login("张三", "HM_2023_test", "2")
+        print(result.json())
+        assert result.status_code == 200
+        assert result.json().get("code") == 500
+        assert result.json().get("msg") == "用户不存在/密码错误"

@@ -3,7 +3,7 @@
 """
 import requests
 
-from api01_cap_image import cap_image
+from api.api01_cap_image import cap_image
 import config
 
 

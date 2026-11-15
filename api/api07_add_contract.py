@@ -3,9 +3,9 @@
 """
 import random
 import requests
-import api06_upload_file
+from api import api06_upload_file
 import config
-import tools
+from utils import tools
 
 url = f"{config.BASE_URL}/api/contract"
 headers = {
