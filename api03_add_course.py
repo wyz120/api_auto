@@ -4,16 +4,10 @@
 import requests
 
 import config
-from api02_login import login
 
 def add_course():
-    token = login()
     url = config.BASE_URL+"/api/clues/course"
-    headers = {
-        "content-type": "application/json",
-        "Authorization": token,
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
-    }
+    headers = config.BASE_HEADERS
     jsons = {
         "name": "11月15日软件测试",
         "subject": "2",
