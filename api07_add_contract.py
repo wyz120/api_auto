@@ -24,4 +24,4 @@ json = {
     "fileName": f"{api06_upload_file.upload_file_name()}"
 }
 respond = requests.post(url,headers=headers,json=json)
-print(respond.text)
+print(respond.json())
