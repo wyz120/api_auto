@@ -2,12 +2,15 @@
 新增课程
 """
 import requests
-
 import config
+import tools
 
 def add_course():
     url = config.BASE_URL+"/api/clues/course"
-    headers = config.BASE_HEADERS
+    headers = {
+        "Authorization": tools.get_token_func(),
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+    }
     jsons = {
         "name": "11月15日软件测试",
         "subject": "2",
