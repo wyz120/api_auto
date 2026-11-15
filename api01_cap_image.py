@@ -15,5 +15,6 @@ def cap_image():
 
     #4.打印结果
     return respond.json()["uuid"]
+    print(respond.status_code)
     print(respond.json())
 
