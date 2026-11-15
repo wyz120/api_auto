@@ -2,11 +2,13 @@
 新增课程
 """
 import requests
+
+import config
 from api02_login import login
 
 def add_course():
     token = login()
-    url = "http://kdtx-test.itheima.net/api/clues/course"
+    url = config.BASE_URL+"/api/clues/course"
     headers = {
         "content-type": "application/json",
         "Authorization": token,

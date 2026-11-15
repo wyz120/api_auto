@@ -3,11 +3,16 @@
 """
 #1.导库
 import requests
+
+import config
 from api01_cap_image import cap_image
+from config import BASE_URL
+
+
 #2.请求准备
 def login():
     uuid = cap_image()
-    url = "http://kdtx-test.itheima.net/api/login"
+    url = config.BASE_URL+"/api/login"
     headers = {
         "content-type": "application/json",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
