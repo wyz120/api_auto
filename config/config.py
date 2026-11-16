@@ -11,6 +11,6 @@ BASE_User_Agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/5
 
 #合同文件路径
 #根目录
-BASE_File_Path = os.path.dirname(os.path.abspath(__file__))
+BASE_PATH = os.path.dirname(os.path.abspath(__file__))
 # config.py 在api_auto/config下，往上跳一层就是项目根
-BASE_DIR = os.path.dirname(BASE_File_Path)
+BASE_DIR = os.path.dirname(BASE_PATH)
