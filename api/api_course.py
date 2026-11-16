@@ -3,7 +3,8 @@
 """
 import requests
 import config
-from utils import tools
+from common import tools
+
 
 class ApiCourse():
     #接口1：新增课程

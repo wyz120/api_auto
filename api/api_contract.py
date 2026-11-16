@@ -1,12 +1,14 @@
 """
     模块：合同管理
 """
+import os
 import random
 
 import requests
 
 import config
-from utils import tools
+from common import tools
+
 
 class ApiContract():
     #接口1：合同上传
@@ -18,15 +20,17 @@ class ApiContract():
             # "Content-Type": "multipart/formdata"
             #注意：使用files 参数时，request 库会自动添加"Content-Type": "multipart/formdata"类型，不必再手动添加，否则会报错！
         }
+
+        file_path = os.path.join(config.BASE_File_Path, "data","demo.pdf")
         files = {
-            "file": open("../data/demo.pdf", "rb")#说明：rb以二进制的方式读取
+            "file": open(file_path, "rb")#说明：rb以二进制的方式读取
         }
         respond = requests.post(url,headers=headers,files=files)
         filename = respond.json().get("fileName")
         return respond
 
     #接口2：新增合同
-    def add_contract(self):
+    def add_contract(self,name,phone,subject):
         url = f"{config.BASE_URL}/api/contract"
         headers = {
             'Authorization': f'{tools.get_token_func()}',
@@ -34,10 +38,10 @@ class ApiContract():
             'Content-Type': 'application/json'
         }
         json = {
-            "name": "账号三",
-            "phone": "18238197899",
+            "name": name,
+            "phone": phone,
             "contractNo": f"HT10{random.randint(100000, 999999)}",
-            "subject": "6",
+            "subject": subject,
             "courseId": 62830,
             "channel": "0",
             "activityId": "",

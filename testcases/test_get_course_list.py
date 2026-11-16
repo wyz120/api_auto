@@ -1,4 +1,5 @@
 from api.api_course import ApiCourse
+from common.tools import assert_common
 
 
 class TestGetCourseList():
@@ -6,6 +7,4 @@ class TestGetCourseList():
     def test_get_course_list01(self):
         result = ApiCourse().get_course_list("11月15日软件测试")
         print(result.json())
-        assert result.status_code == 200
-        assert result.json()["code"] == 200
-        assert result.json()["rows"][0]["name"] == "11月15日软件测试"
+        assert_common(result, 200, "查询成功", 200)
