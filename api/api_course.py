@@ -2,7 +2,7 @@
     模块：课程管理
 """
 import requests
-import config
+from config import config
 from common import tools
 
 

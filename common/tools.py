@@ -9,10 +9,7 @@ import config
 def get_token_func():
     result = ApiLogin().api_login("admin", "HM_2023_test", "2")
     token = result.json().get("token")
-    try:
-        return token
-    except Exception as e:
-        print(e)
+    return token
 
 #断言函数封装
 def assert_common(result,status_code,msg,code):

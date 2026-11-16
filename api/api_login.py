@@ -4,6 +4,7 @@
 #1.导库
 import requests
 import config
+from config import config
 
 #2.请求准备
 class ApiLogin():

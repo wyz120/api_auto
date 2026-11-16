@@ -2,8 +2,8 @@ from api.api_login import ApiLogin
 from common.tools import assert_common
 
 
-class TestLogin:
 
+class TestLogin:
     #案例1：正常登录
     def test_login01(self):
         result = ApiLogin().api_login("admin", "HM_2023_test", "2")

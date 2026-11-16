@@ -3,14 +3,15 @@
 """
 import os
 import random
-
 import requests
-
-import config
+from config import config
 from common import tools
+from config.config import BASE_File_Path
 
 
 class ApiContract():
+    #合同文件名称
+    file_name = None
     #接口1：合同上传
     def upload_file_name(self):
         url = f"{config.BASE_URL}/api/common/upload"
@@ -21,12 +22,12 @@ class ApiContract():
             #注意：使用files 参数时，request 库会自动添加"Content-Type": "multipart/formdata"类型，不必再手动添加，否则会报错！
         }
 
-        file_path = os.path.join(config.BASE_File_Path, "data","demo.pdf")
+        file_path = os.path.join(config.BASE_DIR, "data/","demo.pdf")
         files = {
             "file": open(file_path, "rb")#说明：rb以二进制的方式读取
         }
         respond = requests.post(url,headers=headers,files=files)
-        filename = respond.json().get("fileName")
+        ApiContract.file_name = respond.json().get("fileName")
         return respond
 
     #接口2：新增合同
@@ -45,7 +46,7 @@ class ApiContract():
             "courseId": 62830,
             "channel": "0",
             "activityId": "",
-            "fileName": f"{self.upload_file_name()}"
+            "fileName": f"{ApiContract.file_name}"
         }
         respond = requests.post(url, headers=headers, json=json)
         return respond

@@ -1,9 +1,10 @@
 # 这是一个示例 Python 脚本。
 import os
+import subprocess
 
 import pytest
 
-from testcases import test_login
+from scripts import test_login
 
 
 # 按 ⌃R 执行或将其替换为您的代码。
@@ -19,5 +20,9 @@ def print_hi(name):
 if __name__ == '__main__':
     pytest.main()
     print("运行完成")
+    # 执行allure generate 生成静态html报告
+    # 读取 report 目录下结果，输出到 allure-report，先清空旧报告
+    subprocess.run(["allure", "generate", "report", "-o", "allure-report", "--clean"])
+    # subprocess.run(["allure", "open", "allure-report"])
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
