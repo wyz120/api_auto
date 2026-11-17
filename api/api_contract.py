@@ -6,7 +6,6 @@ import random
 import requests
 from config import config
 from common import tools
-from config.config import BASE_File_Path
 
 
 class ApiContract():

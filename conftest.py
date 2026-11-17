@@ -8,4 +8,3 @@ def demo_func():
     yield{"name": "张三", "age": 18}
     print("\n 这是fixture后置操作")
 
-
