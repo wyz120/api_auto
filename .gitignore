@@ -1,0 +1,14 @@
+# allure报告目录
+report/
+allure-report/
+scripts/report/
+
+# pytest缓存
+.pytest_cache/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 日志、临时文件
+*.log
