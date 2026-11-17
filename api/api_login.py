@@ -13,7 +13,7 @@ class ApiLogin():
         # 2.请求准备
         url = config.BASE_URL + "/api/captchaImage"
         headers = {
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+            "User-Agent": config.BASE_User_Agent
         }
         # 3.发送请求
         respond = requests.get(url, headers=headers)
@@ -28,7 +28,7 @@ class ApiLogin():
         url = config.BASE_URL+"/api/login"
         headers = {
             "content-type": "application/json",
-            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36"
+            "User-Agent": config.BASE_User_Agent
         }
         jsons = {
             "username": username,
