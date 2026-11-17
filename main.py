@@ -23,6 +23,5 @@ if __name__ == '__main__':
     # 执行allure generate 生成静态html报告
     # 读取 report 目录下结果，输出到 allure-report，先清空旧报告
     subprocess.run(["allure", "generate", "report", "-o", "allure-report", "--clean"])
-    # subprocess.run(["allure", "open", "allure-report"])
 
 # 访问 https://www.jetbrains.com/help/pycharm/ 获取 PyCharm 帮助
