@@ -22,6 +22,7 @@ class TestLogin:
         测试登录接口
     """
     @api_log
+    @pytest.mark.aaa
     @pytest.mark.parametrize("case_id,case_name,username,password,image_code,status_code,msg,code", data_list,ids=case_ids)
     def test_login(self, case_id, case_name, username, password, image_code, status_code, msg, code):
         result = ApiLogin().api_login(username, password, image_code)
