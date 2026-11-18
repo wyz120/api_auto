@@ -2,18 +2,20 @@
 pytest测试配置（fixture）
 """
 import pytest
+from common.db_util import DBUtil
+from config.config import BASE_PATH
+import yaml
 @pytest.fixture(scope='class')
 def demo_func():
     print("\n 这是fixture前置操作 ")
     yield{"name": "张三", "age": 18}
     print("\n 这是fixture后置操作")
 
-# def pytest_collection_modifyitems(items):
-#     """
-#     测试用例收集完成后，将收集到的item内的name和_nodeid中的中文转为utf-8
-#     :param items:
-#     :return:
-#     """
-#     for item in items:
-#         item.name = item.name.encode('utf-8').decode('unicode_escape')
-#         item._nodeid = item._nodeid.encode('utf-8').decode('unicode_escape')
+
+@pytest.fixture(scope="session")
+def db():
+    with open(f"{BASE_PATH}/config.yaml", encoding="utf-8") as f:
+        cfg = yaml.safe_load(f)
+    db = DBUtil(**cfg["db"])
+    yield db
+    db.close()
