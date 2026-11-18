@@ -119,34 +119,34 @@ class DBUtil:
 
 
 # ========== 示例配置与调用demo ==========
-if __name__ == '__main__':
-    # 初始化数据库对象，正式项目建议抽离配置文件 config.yaml
-    db = DBUtil(
-        host="127.0.0.1",
-        port=3306,
-        user="root",
-        password="123456",
-        database="test_db"
-    )
-
-    # 1. 查询单条
-    res1 = db.select_one("select * from user where id = %s", (1,))
-    print("单条查询：", res1)
-
-    # 2. 查询多条
-    res2 = db.select_all("select * from user limit %s", (5,))
-    print("多条查询：", res2)
-
-    # 3. 新增
-    new_id = db.insert_return_id("insert into user(name,age) values (%s,%s)", ("张三", 22))
-    print("新增主键id：", new_id)
-
-    # 4. 修改
-    update_rows = db.execute("update user set age=%s where id=%s", (23, new_id))
-    print("更新行数：", update_rows)
-
-    # 5. 删除
-    del_rows = db.execute("delete from user where id=%s", (new_id,))
-    print("删除行数：", del_rows)
-
-    db.close()
+# if __name__ == '__main__':
+#     # 初始化数据库对象，正式项目建议抽离配置文件 config.yaml
+#     db = DBUtil(
+#         host="127.0.0.1",
+#         port=3306,
+#         user="root",
+#         password="123456",
+#         database="test_db"
+#     )
+#
+#     # 1. 查询单条
+#     res1 = db.select_one("select * from user where id = %s", (1,))
+#     print("单条查询：", res1)
+#
+#     # 2. 查询多条
+#     res2 = db.select_all("select * from user limit %s", (5,))
+#     print("多条查询：", res2)
+#
+#     # 3. 新增
+#     new_id = db.insert_return_id("insert into user(name,age) values (%s,%s)", ("张三", 22))
+#     print("新增主键id：", new_id)
+#
+#     # 4. 修改
+#     update_rows = db.execute("update user set age=%s where id=%s", (23, new_id))
+#     print("更新行数：", update_rows)
+#
+#     # 5. 删除
+#     del_rows = db.execute("delete from user where id=%s", (new_id,))
+#     print("删除行数：", del_rows)
+#
+#     db.close()
