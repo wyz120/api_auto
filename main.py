@@ -1,10 +1,7 @@
 # 这是一个示例 Python 脚本。
-import os
 import subprocess
 
 import pytest
-
-from scripts import test_login
 
 
 # 按 ⌃R 执行或将其替换为您的代码。
